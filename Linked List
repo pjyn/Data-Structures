@@ -1,0 +1,76 @@
+// Insertion in Linked List
+
+# include<stdio.h>
+# include<stdlib.h>
+struct node{
+	int data;
+	struct node *next;
+}*first=NULL;		//global pointer
+
+void create(int a[], int n)			//created L_List
+{
+	int i;
+	struct node *t,*last;
+	first = (struct node *)malloc(sizeof(struct node));
+	first->data = a[0];
+	first->next = NULL;
+	last = first;
+	for(i=1;i<n;i++)
+	{
+		t = (struct node *)malloc(sizeof(struct node));
+		t->data = a[i];
+		t->next = NULL;
+		last->next = t;
+		last = t;
+	}
+}
+void display(struct node *p)
+{
+	while(p!=NULL)
+	{
+		printf("%d\t",p->data);
+		p = p->next;
+	}
+}
+void insert(int pos)		//inserting an element
+{
+	if (pos == 0)		//if at '0' position
+	{
+		struct node *t;
+		t = (struct node *)malloc(sizeof(struct node));
+		printf("Enter any number: "	);
+		int data;
+		scanf("%d",&data);
+		t->data = data;
+		t->next = NULL;
+		if(first != NULL)
+			t->next = first;
+		else
+			t->next = NULL;
+		first = t;
+	}
+	else
+	{
+		struct node *p = first;				//initialise a 'p' pointer which will start from first position
+		for(int i =1;i<pos;i++)			//it will move the pointer from one Linked_List to another..
+			p = p->next;
+		struct node *t;
+		t = (struct node *)malloc(sizeof(struct node));		//allocating space for new Linked_list
+		int data;
+		printf("Enter the value to enter: ");
+		scanf("%d",&data);
+		t->data = data;
+		t->next = p->next;
+		p->next = t;			
+	}
+}
+int main()
+{
+	int a[] = {20,30,40,50,60};
+	create(a,5);
+	int pos;
+	printf("Enter the position: ");
+	scanf("%d",&pos);
+	insert(pos);
+	display(first);
+}
