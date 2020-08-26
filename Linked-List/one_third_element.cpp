@@ -3,7 +3,7 @@ using namespace std;
 
 struct Node{
   public:int data;
-  struct node *next;
+  struct Node *next;
 }*first=NULL;
 
 void create(int a[], int n)
@@ -14,8 +14,9 @@ void create(int a[], int n)
     first = new Node();
   first->data = a[0];
   first->next = NULL;
+  Node *t,*last;
   last = first;
-  for(int i=0;i<n;i++)
+  for(int i=1;i<n;i++)
   {
       Node *t = new Node();
       t->data = a[i];
@@ -49,7 +50,7 @@ void middle()
 int main()
 {
    int a[] = {10,20,30,40,50};
-   create (a,n);
+   create (a,5);
    display(first);
    middle();
    return 0;
