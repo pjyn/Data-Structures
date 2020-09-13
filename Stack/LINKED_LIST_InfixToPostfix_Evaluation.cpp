@@ -54,6 +54,7 @@ char *InfixToPostfix(char *infix)             //CONVERSION..
     int i = j =0;
     int l = strlen(infix);
     char *postfix;
+    postfix = new char (l+1);
     while(infix[i] != '\0')
     {
         if(isOperand(infix[i]))
