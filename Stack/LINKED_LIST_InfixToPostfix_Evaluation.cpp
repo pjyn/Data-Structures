@@ -79,7 +79,7 @@ char *eval(char *postfix)                   //EVALUATION..
     {
         if(isOperand(postfix[i]))
         {
-            push(postfix[i] - '\0');
+            push(postfix[i] - '\0');      //ASCII value 
         }
         else
         {
